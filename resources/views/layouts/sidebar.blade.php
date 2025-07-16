@@ -43,12 +43,12 @@
                 <a href="{{ route('jadwal.index') }}"><i class="fa fa-calendar"></i><span>Jadwal
                         Bimbingan</span></a>
             </li>
-            <li class="{{ Request::is('panel/pengumuman*') ? 'active' : '' }}">
-                <a href="{{ route('pengumuman.index') }}"><i class="fa fa-area-chart"></i><span>Monitoring
+            <li class="{{ Request::is('panel/*') ? 'active' : '' }}">
+                <a href=""><i class="fa fa-area-chart"></i><span>Monitoring
                         Bimbingan</span></a>
             </li>
-            <li class="{{ Request::is('panel/kegiatan*') ? 'active' : '' }}">
-                <a href="{{ route('kegiatan.index') }}"><i class="fa fa-print"></i><span>Laporan</span></a>
+            <li class="{{ Request::is('panel/*') ? 'active' : '' }}">
+                <a href=""><i class="fa fa-print"></i><span>Laporan</span></a>
             </li>
             <li class="header">More</li>
             <li class="treeview {{ Request::is('panel/users*', 'panel/aplikasi*') ? 'active menu-open' : '' }}">
