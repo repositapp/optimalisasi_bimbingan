@@ -70,7 +70,7 @@
                                 @foreach ($dosens as $row)
                                     <option value="{{ $row->id }}"
                                         @if (old('pembimbing_id', $jadwal->pembimbing_id) == $row->id) selected="selected" @endif>
-                                        {{ $row->judul }}
+                                        {{ $row->nama_dosen }}
                                     </option>
                                 @endforeach
                             </select>
@@ -115,7 +115,7 @@
                                 <input type="text"
                                     class="form-control pull-right timepicker @error('waktu_mulai') is-invalid @enderror"
                                     id="datepicker" name="waktu_mulai"
-                                    value="{{ old('waktu_mulai', $jadwal->waktu_mulai ? \Carbon\Carbon::createFromFormat('H:i', $jadwal->waktu_mulai)->format('h:i A') : '') }}"
+                                    value="{{ old('waktu_mulai', $jadwal->waktu_mulai ? \Carbon\Carbon::parse($jadwal->waktu_mulai)->format('h:i A') : '') }}"
                                     placeholder="hh:mm am/pm">
                             </div>
                             @error('waktu_mulai')
@@ -137,7 +137,7 @@
                                 <input type="text"
                                     class="form-control pull-right timepicker @error('waktu_selesai') is-invalid @enderror"
                                     id="datepicker" name="waktu_selesai"
-                                    value="{{ old('waktu_selesai', $jadwal->waktu_selesai ? \Carbon\Carbon::createFromFormat('H:i', $jadwal->waktu_selesai)->format('h:i A') : '') }}"
+                                    value="{{ old('waktu_selesai', $jadwal->waktu_selesai ? \Carbon\Carbon::parse($jadwal->waktu_selesai)->format('h:i A') : '') }}"
                                     placeholder="hh:mm am/pm">
                             </div>
                             @error('waktu_selesai')

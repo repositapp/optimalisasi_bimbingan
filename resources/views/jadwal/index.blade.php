@@ -21,7 +21,7 @@
                 <div class="row align-items-center">
                     <div class="col-md-6 align-items-center">
                         <form action="{{ route('jadwal.index') }}">
-                            <div class="input-group input-group-sm hidden-xs" style="width: 150px;">
+                            <div class="input-group input-group-sm hidden-xs" style="width: 15'dijadwalkan'px;">
                                 <input type="text" name="search" class="form-control pull-right" placeholder="Search..."
                                     value="{{ request('search') }}">
                                 <div class="input-group-btn">
@@ -50,6 +50,7 @@
                             <th>Waktu</th>
                             <th>Topik</th>
                             <th>Lokasi</th>
+                            <th>Status</th>
                             <th class="text-center">Aksi</th>
                         </tr>
                     </thead>
@@ -60,11 +61,20 @@
                                 <td>{{ $jadwal->judul->judul }}</td>
                                 <td>{{ $jadwal->judul->mahasiswa->nama_mahasiswa }}</td>
                                 <td>{{ $jadwal->pembimbing->nama_dosen }}</td>
-                                <td>{{ \Carbon\Carbon::parse($jadwal->tanggal)->locale('id')->translatedFormat('d F Y') }}
+                                <td>{{ \Carbon\Carbon::parse($jadwal->tanggal_bimbingan)->locale('id')->translatedFormat('d F Y') }}
                                 </td>
                                 <td>{{ $jadwal->waktu_mulai }} - {{ $jadwal->waktu_selesai }}</td>
                                 <td>{{ $jadwal->topik_bimbingan }}</td>
                                 <td>{{ $jadwal->tempat }}</td>
+                                <td>
+                                    @if ($jadwal->status == 'dijadwalkan')
+                                        <span class="label label-success">dijadwalkan</span>
+                                    @elseif ($jadwal->status == 'selesai')
+                                        <span class="label label-info">Selesai</span>
+                                    @elseif ($jadwal->status == 'batal')
+                                        <span class="label label-danger">Batal</span>
+                                    @endif
+                                </td>
                                 <td class="text-center">
                                     <div class="btn-group d-flex">
                                         <a href="{{ route('jadwal.edit', $jadwal->id) }}"
