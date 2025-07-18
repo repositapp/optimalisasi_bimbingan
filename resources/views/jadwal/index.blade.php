@@ -91,7 +91,7 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="9" class="text-center">
+                                <td colspan="10" class="text-center">
                                     Jadwal bimbingan belum tersedia.
                                 </td>
                             </tr>
