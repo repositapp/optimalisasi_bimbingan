@@ -81,7 +81,7 @@ class UserAuthController extends Controller
                     'pendidikan_terakhir' => $dosen->pendidikan_terakhir,
                     'bidang_ilmu' => $dosen->bidang_ilmu,
                 ]);
-
+                dd($dosen);
                 return redirect('dosen/dashboard');
             }
 

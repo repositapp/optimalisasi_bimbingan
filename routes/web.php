@@ -62,16 +62,16 @@ Route::post('/user/logout', [UserAuthController::class, 'logout'])->name('user.l
 // =================== MAHASISWA PANEL ===================
 Route::prefix('mahasiswa')->middleware(['auth:user', 'role:mahasiswa'])->group(function () {
     Route::get('/dashboard', [MahasiswaController::class, 'dashboard'])->name('mahasiswa.dashboard');
+    Route::get('/jadwal', [JadwalController::class, 'show'])->name('mahasiswa.jadwal');
     Route::get('/profil', [UserController::class, 'profilMahasiswa'])->name('mahasiswa.profil');
-    // Route::get('/jadwal-bimbingan', [MahasiswaController::class, 'lihatJadwal'])->name('mahasiswa.jadwal');
     // Route::get('/laporan', [MahasiswaController::class, 'uploadLaporan'])->name('mahasiswa.laporan');
     // Route::post('/laporan', [MahasiswaController::class, 'storeLaporan'])->name('mahasiswa.laporan.store');
     // Route::get('/revisi', [MahasiswaController::class, 'lihatRevisi'])->name('mahasiswa.revisi');
 });
 
 // =================== DOSEN PANEL ===================
-// Route::prefix('dosen')->middleware(['auth:user', 'role:dosen'])->group(function () {
-//     Route::get('/dashboard', [DosenController::class, 'dashboard'])->name('dosen.dashboard');
-//     Route::get('/jadwal-bimbingan', [DosenController::class, 'lihatJadwal'])->name('dosen.jadwal');
-//     Route::get('/mahasiswa-bimbingan', [DosenController::class, 'lihatMahasiswa'])->name('dosen.mahasiswa');
-// });
+Route::prefix('dosen')->middleware(['auth:user', 'role:dosen'])->group(function () {
+    Route::get('/dashboard', [DosenController::class, 'dashboard'])->name('dosen.dashboard');
+    // Route::get('/jadwal-bimbingan', [DosenController::class, 'lihatJadwal'])->name('dosen.jadwal');
+    // Route::get('/mahasiswa-bimbingan', [DosenController::class, 'lihatMahasiswa'])->name('dosen.mahasiswa');
+});

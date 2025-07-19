@@ -99,4 +99,9 @@ class DosenController extends Controller
         $akun->delete();
         return redirect()->route('dosen.index')->with(['success' => 'Data berhasil dihapus!']);
     }
+
+    public function dashboard()
+    {
+        return view('user.dosen.dashboard');
+    }
 }

@@ -132,7 +132,7 @@ body {
 
 /* Ensure the main container fits mobile view */
 .dashboard-wrapper {
-    max-width: 400px; /* Typical mobile screen width */
+    max-width: none; /* Typical mobile screen width */
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
     min-height: 100vh;
@@ -146,7 +146,7 @@ body {
     position: fixed;
     top: 0;
     width: 100%;
-    max-width: 400px; /* Match dashboard-wrapper width */
+    max-width: none; /* Match dashboard-wrapper width */
     background-color: #ffffff; /* Blue background */
     color: #111827;
     height: 55px; /* Height of the sticky header */
@@ -374,4 +374,129 @@ body {
 /* Specific color for "Keluar" item */
 .profile-action-item.text-danger .las {
     color: #dc3545; /* Red for logout icon */
+}
+
+/* --- Dosen Dashboard Specific Styles --- */
+.dosen-dashboard-wrapper .status-bar {
+    background-color: transparent; /* Inherits from header */
+    color: white;
+}
+
+.dosen-dashboard-header {
+    background-color: #3B82F6; /* Blue color from the image */
+    color: white;
+    padding: 20px 20px 80px 20px; /* Increased bottom padding to make space for user-info */
+    position: relative;
+    border-bottom-left-radius: 20px; /* Rounded corners from original dashboard image */
+    border-bottom-right-radius: 20px;
+}
+
+.dosen-user-info {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    bottom: -30px; /* Adjust to overlap with the content below */
+    left: 20px;
+    right: 20px;
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 15px 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.dosen-user-info .profile-pic {
+    border-color: #3B82F6 !important; /* Blue border matching header */
+}
+
+.dosen-user-info h2 {
+    color: #333;
+}
+
+.dosen-dashboard-content {
+    padding: 60px 20px 20px 20px; /* Adjust top padding to account for dosen-user-info card */
+    flex-grow: 1;
+    padding-bottom: 80px; /* Space for fixed bottom navbar */
+}
+
+/* Jadwal Hari Ini Section */
+.jadwal-hari-ini-card {
+    border-radius: 15px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    padding-top: 15px !important;
+    padding-bottom: 15px !important;
+}
+
+.jadwal-hari-ini-card .las.la-calendar-alt {
+    font-size: 1.2rem;
+    color: #3B82F6; /* Blue icon */
+}
+
+.jadwal-item {
+    background-color: #e6f0ff; /* Light blue background for schedule items */
+    border-left: 5px solid #3B82F6; /* Blue left border */
+}
+
+.jadwal-item p {
+    font-size: 0.9rem;
+}
+
+.jadwal-item small {
+    font-size: 0.75rem;
+}
+
+/* --- Jadwal Bimbingan Page Specific Styles --- */
+.jadwal-bimbingan-page .status-bar {
+    background-color: #f0f2f5; /* Light grey background */
+    color: #333;
+}
+
+.jadwal-header {
+    background-color: #fff;
+    border-bottom: 1px solid #eee;
+}
+
+.jadwal-header .las.la-angle-left {
+    font-size: 1.8rem;
+}
+
+.jadwal-header h1 {
+    color: #333; /* Dark text for "Portal Mahasiswa" */
+}
+
+.jadwal-content {
+    background-color: #fff;
+    padding-bottom: 20px;
+}
+
+.jadwal-bimbingan-item {
+    border-radius: 15px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.jadwal-bimbingan-item .time {
+    position: absolute;
+    top: 43px;
+    left: 49px;
+}
+
+.jadwal-bimbingan-item .las {
+    font-size: 1.1rem;
+    color: #888; /* Muted icon color for details */
+    width: 25px; /* Fixed width for alignment */
+    text-align: center;
+}
+
+.jadwal-bimbingan-item .badge.bg-warning-subtle {
+    background-color: #fff3cd !important; /* Yellowish background for 'Menunggu' */
+    color: #856404 !important; /* Darker text for 'Menunggu' */
+}
+
+.jadwal-bimbingan-item .badge.bg-success-subtle {
+    background-color: #d4edda !important; /* Light green background for 'Disetujui' */
+    color: #155724 !important; /* Darker text for 'Disetujui' */
+}
+
+.jadwal-bimbingan-item .badge.bg-danger-subtle {
+    background-color: #d4edda !important; /* Light green background for 'Disetujui' */
+    color: #571515 !important; /* Darker text for 'Disetujui' */
 }

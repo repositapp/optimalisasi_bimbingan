@@ -130,4 +130,11 @@ class JadwalController extends Controller
 
         return response()->json($pembimbings);
     }
+
+    public function show()
+    {
+        $jadwals = Jadwal::with(['judul.mahasiswa', 'pembimbing'])->get();
+
+        return view('user.mahasiswa.jadwal', compact('jadwals'));
+    }
 }

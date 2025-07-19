@@ -5,7 +5,8 @@
             <i class="las la-home mb-1"></i>
             <span class="small">Home</span>
         </a>
-        <a class="nav-item d-flex flex-column align-items-center text-decoration-none" href="#">
+        <a href="{{ route('mahasiswa.jadwal') }}"
+            class="nav-item d-flex flex-column align-items-center text-decoration-none">
             <i class="las la-calendar-alt mb-1"></i>
             <span class="small">Jadwal</span>
         </a>
