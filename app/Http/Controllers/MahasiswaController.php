@@ -94,10 +94,19 @@ class MahasiswaController extends Controller
     public function destroy($id)
     {
         $mahasiswa = Mahasiswa::findOrFail($id);
-        $akun = User::findOrFail($mahasiswa->user_id);
+
+        // Hapus judul terkait
         $mahasiswa->juduls()->delete();
-        $mahasiswa->delete();
+
+        // Hapus akun user
+        $akun = User::findOrFail($mahasiswa->user_id);
         $akun->delete();
+
+        // Hapus mahasiswa
+        $mahasiswa->delete();
+
+        return redirect()->route('mahasiswa.index')->with('success', 'Data berhasil dihapus!');
+
         return redirect()->route('mahasiswa.index')->with(['success' => 'Data berhasil dihapus!']);
     }
 
