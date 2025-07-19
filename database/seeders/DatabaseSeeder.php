@@ -49,17 +49,41 @@ class DatabaseSeeder extends Seeder
             'created_at' => now(),
         ]);
         User::updateOrCreate([
-            'name' => 'Mahasiswa',
+            'name' => 'Saskian',
             'username' => 'mahasiswa',
-            'email' => 'mahasiswa@gmail.com',
+            'email' => 'saskian@gmail.com',
             'email_verified_at' => now(),
             'password' => Hash::make('12345678'),
-            'avatar' => 'users-images/1J7iwiUja9gMqtHL7eIzR6RbaH0rrzZ5buklDQLy.png',
+            'avatar' => 'users-images/avatar2.png',
             'role' => 'mahasiswa',
             'status' => '1',
             'created_at' => now(),
         ]);
         User::factory(42)->create();
+
+        Dosen::updateOrCreate([
+            'user_id' => 2,
+            'nidn' => '12345678',
+            'nama_dosen' => 'Dosen Pembimbinng',
+            'jenis_kelamin' => 'Laki-Laki',
+            'alamat_dosen' => 'Jl. Sultan Hasanuddin',
+            'email' => 'pembimbing@gmail.com',
+            'telepon' => '082211242252',
+            'pendidikan_terakhir' => 'Strata-2',
+            'bidang_ilmu' => 'Teknik Informatika',
+        ]);
+
+        Mahasiswa::updateOrCreate([
+            'user_id' => 3,
+            'npm' => '12345678',
+            'nama_mahasiswa' => 'Saskian',
+            'jenis_kelamin' => 'Perempuan',
+            'alamat_mahasiswa' => 'Bungi',
+            'email' => 'saskian@gmail.com',
+            'telepon' => '082211242252',
+            'kelas' => 'C',
+            'angkatan' => 2021,
+        ]);
 
         Dosen::factory(25)->create();
         Mahasiswa::factory(15)->create();

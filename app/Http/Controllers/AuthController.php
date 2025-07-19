@@ -22,9 +22,13 @@ class AuthController extends Controller
             'password' => 'required|min:8'
         ]);
 
-        if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
+        if (Auth::guard('web')->attempt($credentials)) {
+            if (Auth::guard('web')->user()->role !== 'admin') {
+                Auth::guard('web')->logout();
+                return back()->withErrors(['username' => 'Akun ini bukan admin.']);
+            }
 
+            $request->session()->regenerate();
             return redirect('panel/dashboard');
         }
 
@@ -33,7 +37,7 @@ class AuthController extends Controller
 
     public function logout(Request $request)
     {
-        Auth::logout();
+        Auth::guard('web')->logout();
 
         $request->session()->invalidate();
 

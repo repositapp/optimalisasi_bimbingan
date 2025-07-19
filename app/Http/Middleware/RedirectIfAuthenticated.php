@@ -19,9 +19,28 @@ class RedirectIfAuthenticated
     {
         $guards = empty($guards) ? [null] : $guards;
 
+        // foreach ($guards as $guard) {
+        //     if (Auth::guard($guard)->check()) {
+        //         return redirect(RouteServiceProvider::HOME);
+        //     }
+        // }
+
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
-                return redirect(RouteServiceProvider::HOME);
+                switch ($guard) {
+                    case 'web':
+                        return redirect('/panel/dashboard');
+                    case 'user':
+                        $user = Auth::guard('user')->user();
+
+                        if ($user->role === 'mahasiswa') {
+                            return redirect('/mahasiswa/dashboard');
+                        } elseif ($user->role === 'dosen') {
+                            return redirect('/dosen/dashboard');
+                        } else {
+                            abort(404);  // Role tidak dikenali, tampilkan halaman 404
+                        }
+                }
             }
         }
 

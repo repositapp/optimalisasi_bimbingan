@@ -99,4 +99,20 @@ class MahasiswaController extends Controller
         $akun->delete();
         return redirect()->route('mahasiswa.index')->with(['success' => 'Data berhasil dihapus!']);
     }
+
+    public function dashboard()
+    {
+        // $search = request('search');
+        // $query = Mahasiswa::latest();
+        // if ($search) {
+        //     $query->where('nama_mahasiswa', 'like', '%' . $search . '%')
+        //         ->orWhere('npm', 'like', '%' . $search . '%')
+        //         ->orWhere('kelas', 'like', '%' . $search . '%')
+        //         ->orWhere('angkatan', 'like', '%' . $search . '%');
+        // }
+        // $mahasiswa = $query->paginate(10)->appends(['search' => $search]);
+
+        // return view('mahasiswa.index', compact('mahasiswa'));
+        return view('user.mahasiswa.dashboard');
+    }
 }
