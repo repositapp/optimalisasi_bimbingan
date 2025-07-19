@@ -98,14 +98,12 @@ class MahasiswaController extends Controller
         // Hapus judul terkait
         $mahasiswa->juduls()->delete();
 
-        // Hapus akun user
-        $akun = User::findOrFail($mahasiswa->user_id);
-        $akun->delete();
-
-        // Hapus mahasiswa
+        // Hapus mahasiswa (karena masih terhubung dengan user)
         $mahasiswa->delete();
 
-        return redirect()->route('mahasiswa.index')->with('success', 'Data berhasil dihapus!');
+        // Setelah mahasiswa terhapus, baru hapus akun user
+        $akun = User::findOrFail($mahasiswa->user_id);
+        $akun->delete();
 
         return redirect()->route('mahasiswa.index')->with(['success' => 'Data berhasil dihapus!']);
     }
